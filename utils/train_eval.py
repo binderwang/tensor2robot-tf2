@@ -35,8 +35,10 @@ from tensor2robot.utils import tensorspec_utils
 from tensorflow.compat.v1 import estimator as tf_estimator
 import tensorflow.compat.v1 as tf  # tf
 
-from tensorflow.contrib import tpu as contrib_tpu
-from tensorflow.contrib import training as contrib_training
+#from tensorflow.contrib import tpu as contrib_tpu
+from tf_slim import learning as contrib_training
+from tensorflow.compat.v1.estimator import tpu as contrib_tpu
+
 
 ExporterFn = Callable[[
     model_interface.ModelInterface, abstract_export_generator
@@ -117,7 +119,7 @@ def provide_input_generator_with_model_information(
       Note it is not a copy but an in-place operation.
   """
   tf.logging.info('!' * 80)
-  tf.logging.info('guzzler_use_compression %s', str(guzzler_use_compression))
+  #tf.logging.info('guzzler_use_compression %s', str(guzzler_use_compression))
   tf.logging.info('!' * 80)
   if not isinstance(input_generator_instance,
                     abstract_input_generator.AbstractInputGenerator):
