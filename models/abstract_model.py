@@ -32,9 +32,12 @@ from tensor2robot.preprocessors import noop_preprocessor
 from tensor2robot.utils import tensorspec_utils
 import tensorflow.compat.v1 as tf
 from tensorflow.compat.v1 import estimator as tf_estimator
-from tensorflow.contrib import framework as contrib_framework
-from tensorflow.contrib import tpu as contrib_tpu
-from tensorflow.contrib import training as contrib_training
+#from tensorflow.contrib import framework as contrib_framework
+#from tensorflow.contrib import tpu as contrib_tpu
+from tensorflow.compat.v1.estimator import tpu as contrib_tpu
+from tf_slim import learning as contrib_training
+import tf_slim as slim
+
 
 FLAGS = flags.FLAGS
 TRAIN = tf_estimator.ModeKeys.TRAIN
@@ -108,7 +111,7 @@ def default_init_from_checkpoint_fn(
   """
   logging.info('Initializing model weights from %s', checkpoint)
   reader = tf.train.load_checkpoint(checkpoint)
-  variables_to_restore = contrib_framework.get_variables()
+  variables_to_restore = slim.get_variables()
   assignment_map = {}
   for v in variables_to_restore:
     if filter_restorables_fn is not None and not filter_restorables_fn(v):
