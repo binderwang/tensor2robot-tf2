@@ -1,0 +1,20 @@
+## change from tf1-->tf2  
+  
+#  from tensorflow.contrib import tpu as contrib_tpu --> from tensorflow.compat.v1.estimator import tpu as contrib_tpu
+#  from tensorflow.contrib import predictor as contrib_predictor --> import tensorflow as tf2, tf2.saved_model.load()
+#  from tensorflow.contrib import framework as contrib_framework --> import tf_slim as slim, slim.get_variables()
+#  from tensorflow.contrib import slim as contrib_slim --> import tf_slim as slim
+#  from tensorflow.contrib import layers --> import tf_slim as slim
+#  from tensorflow.contrib import layers as contrib_layers --> from tf_slim import layers as contrib_layers
+#  from tensorflow.contrib import graph_editor as contrib_graph_editor
+--> $ git clone https://github.com/CODAIT/graph_def_editor.git
+    $ pip install ./graph_def_editor
+    $ import graph_def_editor as contrib_graph_editor
+#  from tensorflow.contrib import training as contrib_training --> from tf_slim import learning as contrib_training
+#  from tensorflow.contrib import framework as contrib_framework, nest = contrib_framework.nest --> from tensorflow.python.util import nest
+#  from tensorflow.contrib import framework, framework.arg_scope --> import tf_slim as slim, slim.arg_scope
+#  from tensorflow.contrib import seq2seq as contrib_seq2seq 
+--> $ pip install tensorflow_addons
+    $ from tensorflow_addons import seq2seq as tfa_seq2seq
+#  from tensorflow.contrib import opt as contrib_opt --> import tensorflow_addons as tfa, tfa.optimizers.MovingAverage()
+#  from tensorflow.contrib.tpu.python.tpu import tpu_function --> from tensorflow.python.tpu import tpu_function
